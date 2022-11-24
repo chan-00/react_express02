@@ -22,6 +22,8 @@ const db = mysql.createPool({
   user: "root",
   password: "1234",
   database: "reactmysqlex",
+  //한 번에 여러 쿼리문을 보낼 수 있게 해 주는 옵션
+  //현재는 delete 쿼리문에서 여러 쿼리를 보내게 하기 위해 사용
   multipleStatements: true,
 });
 
@@ -96,6 +98,17 @@ app.post("/update", (req, res) => {
     if(err) console.log(err.message);
     res.send(result);
   })
+})
+
+//delete 백엔드
+app.post("/delete", (req, res) => {
+  const id = req.body.boardID;
+
+  const sqlQuery = "delete from board_tbl where board_num = ?; SET @cnt = 0; UPDATE board_tbl SET board_num = @cnt:= @cnt + 1; ALTER TABLE board_tbl AUTO_INCREMENT = 1;";
+  db.query(sqlQuery, [id], (err,result) => {
+    if(err) console.log(err.message);
+    res.send(result);
+  });
 })
 
 app.listen(PORT, () => {
