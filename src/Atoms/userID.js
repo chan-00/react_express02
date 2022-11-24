@@ -2,12 +2,12 @@ import { atom } from "recoil";
 
 const userID = atom({
     key: 'id',
-    default: ""
+    default: window.sessionStorage.id ? window.sessionStorage.id : ""
 });
 
 const isLoggedin = atom({
     key: 'isLoggedin',
-    default: false
+    default: window.sessionStorage.id ? true : false
 });
 
 export { userID, isLoggedin };

@@ -1,6 +1,6 @@
 import {Link, useNavigate} from "react-router-dom";
 import {boardList} from "../Atoms/boardList";
-import {useRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import { useEffect } from "react";
 import { isLoggedin } from "../Atoms/userID";
 //function import
@@ -10,11 +10,13 @@ import BoardArticle from "../component/BoardArticle";
 
 function Main() {
     const [boardlist, setBoardList] = useRecoilState(boardList);
-    const getIsLoggedIn = useRecoilState(isLoggedin);
+    const getIsLoggedIn = useRecoilValue(isLoggedin);
 
     useEffect(() => {
         getList(setBoardList);
     }, []);
+
+    console.log(getIsLoggedIn);
 
     if(boardlist.length === 0) {
         return (

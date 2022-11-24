@@ -11,6 +11,7 @@ function Header() {
     const handleLogout = () => {
         setLoginID("");
         setLoginStatus(false);
+        window.sessionStorage.clear();
 
         alert("로그아웃 되었습니다!");
         navigate("/");

@@ -16,11 +16,11 @@ function Login() {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        if(idRef === "" || idRef === undefined) {
+        if(idRef.current.value === "" || idRef.current.value === undefined) {
             alert("아이디를 입력하지 않았습니다!");
             return false;
         }
-        if(pwRef === "" || pwRef === undefined) {
+        if(pwRef.current.value === "" || pwRef.current.value === undefined) {
             alert("비밀번호를 입력하지 않았습니다!");
             return false;
         }
@@ -33,6 +33,7 @@ function Login() {
                 alert("로그인 성공!");
                 setID(idRef.current.value);
                 setIsLoggedin(true);
+                window.sessionStorage.setItem("id", idRef.current.value);
                 navigate("/");
             }
             else {

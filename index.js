@@ -60,6 +60,19 @@ app.get("/getlist", (req, res) => {
   })
 })
 
+//write 백엔드
+app.post("/write", (req, res) => {
+  const title = req.body.title;
+  const content = req.body.content;
+  const writer = req.body.writer;
+
+  const sqlQuery = "insert into board_tbl(BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE) values(?, ?, ?, now());";
+  db.query(sqlQuery, [writer, title, content], (err, result) => {
+    if(err) console.log(err.message);
+    res.send(result);
+  })
+})
+
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);
 });

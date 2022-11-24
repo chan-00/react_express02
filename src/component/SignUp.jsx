@@ -17,15 +17,15 @@ function SignUp() {
     const handleSignUp = (e) => {
         e.preventDefault();
 
-        if(idRef === "" || idRef === undefined) {
+        if(idRef.current.value === "" || idRef.current.value === undefined) {
             alert("아이디를 입력하지 않았습니다!");
             return false;
         }
-        if(pwRef === "" || pwRef === undefined) {
+        if(pwRef.current.value === "" || pwRef.current.value === undefined) {
             alert("비밀번호를 입력하지 않았습니다!");
             return false;
         }
-        if(emailRef === "" || emailRef === undefined) {
+        if(emailRef.current.value === "" || emailRef.current.value === undefined) {
             alert("이메일을 입력하지 않았습니다!");
             return false;
         }
@@ -39,6 +39,7 @@ function SignUp() {
                 alert("회원가입 성공!");
                 setID(idRef.current.value);
                 setIsLoggedin(true);
+                window.sessionStorage.setItem("id", idRef.current.value);
                 navigate("/");
             }
             else {
