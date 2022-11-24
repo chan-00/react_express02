@@ -37,6 +37,18 @@ app.post("/login", (req, res) => {
   })
 })
 
+//signup 백엔드
+app.post("/signup", (req, res) => {
+  const id = req.body.id;
+  const pw = req.body.pw;
+  const email = req.body.email;
+
+  const sqlQuery = "insert into member(userID, userPW, userEmail) values(?, ?, ?);";
+  db.query(sqlQuery, [id, pw, email], (err, result) => {
+    if(err) console.log(err.message);
+    res.send(result);
+  })
+})
 
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);
