@@ -50,6 +50,16 @@ app.post("/signup", (req, res) => {
   })
 })
 
+//getlist 백엔드
+app.get("/getlist", (req, res) => {
+  const sqlQuery = "select BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, DATE_FORMAT(BOARD_DATE, '%Y-%m-%d') AS BOARD_DATE from board_tbl;";
+
+  db.query(sqlQuery, (err, result) => {
+    if(err) console.log(err.message);
+    res.send(result);
+  })
+})
+
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);
 });

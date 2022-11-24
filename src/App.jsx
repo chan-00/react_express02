@@ -5,6 +5,7 @@ import Header from "./component/Header";
 import Main from "./component/Main";
 import Login from "./component/Login";
 import SignUp from "./component/SignUp";
+import WriteBoard from "./component/WriteBoard";
 //css
 import "./css/App.css";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Main></Main>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
+          <Route path="/write" element={<WriteBoard></WriteBoard>}></Route>
         </Routes>
       </Router>
     </div>
