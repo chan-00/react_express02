@@ -25,6 +25,17 @@ const db = mysql.createPool({
   multipleStatements: true,
 });
 
+//login 백엔드
+app.post("/login", (req, res) => {
+  const id = req.body.id;
+  const pw = req.body.pw;
+
+  const sqlQuery = "select count(*) as cnt from member where userID = ? and userPW = ?;";
+  db.query(sqlQuery, [id, pw], (err, result) => {
+    if(err) console.log(err.message);
+    res.send(result);
+  })
+})
 
 
 app.listen(PORT, () => {

@@ -5,9 +5,9 @@ const userID = atom({
     default: ""
 });
 
-const isLogined = atom({
-    key: 'isLogined',
+const isLoggedin = atom({
+    key: 'isLoggedin',
     default: false
 });
 
-export { userID, isLogined };
+export { userID, isLoggedin };

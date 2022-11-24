@@ -1,12 +1,12 @@
 import {Link, useNavigate} from "react-router-dom";
 import { useRecoilState } from "recoil";
-import {userID, isLogined} from "../Atoms/userID";
+import {userID, isLoggedin} from "../Atoms/userID";
 
 function Header() {
     const navigate = useNavigate();
 
     const [loginID, setLoginID] = useRecoilState(userID);
-    const [loginStatus, setLoginStatus] = useRecoilState(isLogined);
+    const [loginStatus, setLoginStatus] = useRecoilState(isLoggedin);
 
     const handleLogout = () => {
         setLoginID("");
