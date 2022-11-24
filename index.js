@@ -73,6 +73,31 @@ app.post("/write", (req, res) => {
   })
 })
 
+//detail 백엔드
+app.post("/detail", (req, res) => {
+  const boardNum = req.body.id;
+
+  const sqlQuery = "select * from board_tbl where board_num = ?;";
+  db.query(sqlQuery, [boardNum], (err, result) => {
+    if(err) console.log(err.message);
+    console.log(result);
+    res.send(result);
+  })
+})
+
+//update 백엔드
+app.post("/update", (req, res) => {
+  const boardID = req.body.boardID;
+  const boardTitle = req.body.boardTitle;
+  const boardContent = req.body.boardContent;
+
+  const sqlQuery = "update board_tbl set board_title = ?, board_content = ? where board_num = ?;";
+  db.query(sqlQuery, [boardTitle, boardContent, boardID], (err, result) => {
+    if(err) console.log(err.message);
+    res.send(result);
+  })
+})
+
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);
 });

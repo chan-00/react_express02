@@ -6,6 +6,7 @@ import Main from "./component/Main";
 import Login from "./component/Login";
 import SignUp from "./component/SignUp";
 import WriteBoard from "./component/WriteBoard";
+import DetailBoard from "./component/DetailBoard";
 //css
 import "./css/App.css";
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
           <Route path="/write" element={<WriteBoard></WriteBoard>}></Route>
+          <Route path="/detail" element={<DetailBoard></DetailBoard>}></Route>
         </Routes>
       </Router>
     </div>
